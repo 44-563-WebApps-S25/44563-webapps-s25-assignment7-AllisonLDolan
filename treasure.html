@@ -14,54 +14,118 @@
         <p>Click on the locations to find silver and gold, watch out for the rattlesnake!</p>
         <p id="locations">Number of locations checked is zero.</p>
         <p id="score">Score is zero</p>
-        <p>Click for help</p>
+        <p id ="chelp">Click for help</p>
         <p id="help">Help report</p>
 
 
         <div class="container">
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
+            <div id = "0" onclick = check(0)><img src="cactuswa.png"></div>
+            <div id = "1" onclick = check(1)><img src="cactuswa.png"></div>
+            <div id = "2" onclick = check(2)><img src="cactuswa.png"></div>
+            <div id = "3" onclick = check(3)><img src="cactuswa.png"></div>
+            <div id = "4" onclick = check(4)><img src="cactuswa.png"></div>
+            <div id = "5" onclick = check(5)><img src="cactuswa.png"></div>
+            <div id = "6" onclick = check(6)><img src="cactuswa.png"></div>
         </div>
         <div class="container">
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
+            <div id = "7" onclick = check(7)><img src="cactuswa.png"></div>
+            <div id = "8" onclick = check(8)><img src="cactuswa.png"></div>
+            <div id = "9" onclick = check(9)><img src="cactuswa.png"></div>
+            <div id = "10" onclick = check(10)><img src="cactuswa.png"></div>
+            <div id = "11" onclick = check(11)><img src="cactuswa.png"></div>
+            <div id = "12" onclick = check(12)><img src="cactuswa.png"></div>
+            <div id = "13" onclick = check(13)><img src="cactuswa.png"></div>
         </div>
         <div class="container">
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
+            <div id = "14" onclick = check(14)><img src="cactuswa.png"></div>
+            <div id = "15" onclick = check(15)><img src="cactuswa.png"></div>
+            <div id = "16" onclick = check(16)><img src="cactuswa.png"></div>
+            <div id = "17" onclick = check(17)><img src="cactuswa.png"></div>
+            <div id = "18" onclick = check(18)><img src="cactuswa.png"></div>
+            <div id = "19" onclick = check(19)><img src="cactuswa.png"></div>
+            <div id = "20" onclick = check(20)><img src="cactuswa.png"></div>
         </div>
         <div class="container">
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
+            <div id = "21" onclick = check(21)><img src="cactuswa.png"></div>
+            <div id = "22" onclick = check(22)><img src="cactuswa.png"></div>
+            <div id = "23" onclick = check(23)><img src="cactuswa.png"></div>
+            <div id = "24" onclick = check(24)><img src="cactuswa.png"></div>
+            <div id = "25" onclick = check(25)><img src="cactuswa.png"></div>
+            <div id = "26" onclick = check(26)><img src="cactuswa.png"></div>
+            <div id = "27" onclick = check(27)><img src="cactuswa.png"></div>
         </div>
         <div class="container">
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
-            <div><img src="cactuswa.png"></div>
+            <div id = "28" onclick = check(28)><img src="cactuswa.png"></div>
+            <div id = "29" onclick = check(29)><img src="cactuswa.png"></div>
+            <div id = "30" onclick = check(30)><img src="cactuswa.png"></div>
+            <div id = "31" onclick = check(31)><img src="cactuswa.png"></div>
+            <div id = "32" onclick = check(32)><img src="cactuswa.png"></div>
+            <div id = "33" onclick = check(33)><img src="cactuswa.png"></div>
+            <div id = "34" onclick = check(34)><img src="cactuswa.png"></div>
         </div>
+        <script>
+            let ids = Array.from({length:35}, (_, i) => i.toString())
+            let score = 0
+            let locationsVisited = 0
+            let lastLocation = 0
+            let silverLocations = [2, 5, 11, 21, 32]
+            let goldLocation = 15
+            let snakeLocation = 20
+            let gameOver = false
+            function check(position){
+                if (gameOver) return
+
+                let div = document.getElementById(position.toString());
+                let img = div.querySelector("img");
+
+
+                if(position === snakeLocation){
+                    img.src="snakewa.JPG"
+                    score -= 3
+                    gameOver = true
+                }
+                else if(position === goldLocation){
+                    img.src="goldwa.jpg"
+                    score += 5
+                }
+                else if(silverLocations.includes(position)){
+                    img.src= "silvercoinwa.jpg"
+                    score += 3
+                }
+                else{
+                    img.src="potterywa.jpg"
+                    score += 1
+                }
+                locationsVisited++
+                lastLocation = position
+
+                document.getElementById("locations").innerText = `Number of locations checked is ${locationsVisited}`
+                document.getElementById("score").innerText = `Score is ${score}`
+            }
+
+            function help(){
+                let row = Math.floor(lastLocation / 7)
+                let col = lastLocation % 7
+                let adj = [
+                    (lastLocation - 1 + 7) % 7 + row * 7,
+                    (lastLocation + 1) % 7 + row * 7, 
+                    (lastLocation - 7 + 35) % 35, 
+                    (lastLocation + 7) % 35
+                ]
+                let srow = Math.floor(snakeLocation / 7)
+                let scol = snakeLocation % 7
+
+                if(adj.some(position => silverLocations.includes(position))){
+                    document.getElementById('help').innerText = "clink"
+                    return
+                }
+                if(Math.abs(row - srow) <= 1 && Math.abs(col - scol) <= 1){
+                    document.getElementById('help').innerText = "rattle"
+                    return
+                }
+                document.getElementById('help').innerText = "wind"
+            }
+            document.getElementById('chelp').onclick = help
+        </script>
     </body>
 </html>
