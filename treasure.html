@@ -65,26 +65,39 @@
         </div>
         <script>
             let ids = Array.from({length:35}, (_, i) => i.toString())
+            let random = () => ids.splice(Math.floor(Math.random() * ids.length), 1)[0]
+            
             let score = 0
             let locationsVisited = 0
             let lastLocation = 0
-            let silverLocations = [2, 5, 11, 21, 32]
-            let goldLocation = 15
-            let snakeLocation = 20
+            let silverLocations = []
+            let goldLocation = ''
+            let snakeLocation = ''
             let gameOver = false
+
+            for (let i = 0; i < 5; i++) {
+                silverLocations.push(Number.parseInt(random()))
+            }
+            snakeLocation = random()
+            goldLocation = random()
+            
+
             function check(position){
                 if (gameOver) return
 
-                let div = document.getElementById(position.toString());
-                let img = div.querySelector("img");
+                let div = document.getElementById(position.toString())
+                let img = div.querySelector("img")
 
+                console.log(position)
+                console.log(goldLocation)
+                console.log(goldLocation == position)
 
-                if(position === snakeLocation){
+                if(position == snakeLocation){
                     img.src="snakewa.JPG"
                     score -= 3
                     gameOver = true
                 }
-                else if(position === goldLocation){
+                else if(position == goldLocation){
                     img.src="goldwa.jpg"
                     score += 5
                 }
@@ -96,6 +109,14 @@
                     img.src="potterywa.jpg"
                     score += 1
                 }
+                snakeLocation = (snakeLocation + 6)%35
+
+                if(snakeLocation === position){
+                    img.src="snakewa.JPG"
+                    score -= 3
+                    gameOver = true
+                }
+
                 locationsVisited++
                 lastLocation = position
 

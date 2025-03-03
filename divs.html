@@ -36,6 +36,8 @@
 		<button onclick="addEnd()">Add end</button>
 		<button onclick="addFront()">Add front</button>
 		<button onclick="remove()">Remove</button>
+		<button onclick="promote()">Promote</button>
+
 
 	
 	
@@ -72,6 +74,21 @@
 
 		let container = document.getElementById('target')
 		container.insertBefore(element, container.firstChild)
+	}
+	function promote(){
+		let divList = Array.from(document.getElementsByClassName("divlist"))
+
+		length = divList.length
+
+		randItem = Math.floor(Math.random() * length)
+		randIndex = divList[randItem]
+
+		parent = randIndex.parentNode
+		prevSib = randIndex.previousElementSibling
+
+		if (prevSib) {
+			parent.insertBefore(randIndex, prevSib)
+		}
 	}
 </script>
 </html>	

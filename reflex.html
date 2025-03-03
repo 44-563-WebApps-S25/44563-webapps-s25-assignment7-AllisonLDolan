@@ -30,10 +30,11 @@
     console.log(haltTime);
   }
   function beginTime(){
-    for (let i = 0; i < 6; i++) {
+    x = (Math.random() * 9) + 2
+    for (let i = 0; i < x; i++) {
       setTimeout(function(){
         document.getElementById("counter").innerHTML = i;
-      }, (5 - i) * 1000)
+      }, (x - i) * 1000)
     }
     setTimeout(function(){
       if(haltTime === undefined){
@@ -44,7 +45,7 @@
         let final = targetTime - haltTime
         document.getElementById("target").innerHTML = `Time was: ${final}ms` ;
       }
-    }, 5000)
+    }, x * 1000)
   }
   </script>
 
