@@ -13,39 +13,38 @@
 
   <h2>Reflexes</h2>
 
-  <div id = "target">
-    <p>Your time</p>
+  <div>
+    <p id = "target">Your time</p>
   </div>
-  <div id = "counter">
-    <p>Count</p>
-    <button type="button" class="btn btn-primary" onclick="buttonPress2()">Go</button>
-    <button type="button" class="btn btn-primary" onclick="recordTime()">Halt</button>
-  
+  <div>
+    <p id = "counter">Count</p>
+    <button type="button" onclick="beginTime()">Go</button>
+    <button type="button" onclick="recordTime()">Halt</button>
   </div>
-
-  <button type="button"
-  class="btn btn-primary"
-  onclick="buttonPress2()">
-  Click me change the color.</button>
-  
-  <p id="target">I will become red </p>
   
   <script> 
   let haltTime = undefined
-  function buttonPress1() {
-    setTimeout(function(){
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
 
-  function buttonPress2() {
-    setTimeout(()=>{
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
   function recordTime(){
     haltTime = Date.now()
     console.log(haltTime);
+  }
+  function beginTime(){
+    for (let i = 0; i < 6; i++) {
+      setTimeout(function(){
+        document.getElementById("counter").innerHTML = i;
+      }, (5 - i) * 1000)
+    }
+    setTimeout(function(){
+      if(haltTime === undefined){
+        document.getElementById("target").innerHTML = "Not soon enough";
+      }
+      else{
+        let targetTime = Date.now()
+        let final = targetTime - haltTime
+        document.getElementById("target").innerHTML = `Time was: ${final}ms` ;
+      }
+    }, 5000)
   }
   </script>
 
